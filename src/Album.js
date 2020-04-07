@@ -15,7 +15,7 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import siglogo from './signature.png';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Slide from '@material-ui/core/Slide';
+import Grow from '@material-ui/core/Grow';
 
 const getMuiTheme = ()=> createMuiTheme({
   palette: {
@@ -70,6 +70,12 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function Album() {
   const classes = useStyles();
   const [listOfImages, setListOfImages] = useState([]);
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
+
   function importAll(r) {
     return r.keys().map(r);
   }
@@ -122,6 +128,10 @@ export default function Album() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {listOfImages.map((image, index) => (
+                <Grow
+                in={checked}
+                style={{ transformOrigin: '0 0 0', transitionDelay: index*100 }}
+              >
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -138,12 +148,13 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button href={image} size="small" color="primary">
+                    <Button href={image} target="_blank" size="small" color="primary">
                       View
                     </Button>
                   </CardActions>
                 </Card>
               </Grid>
+              </Grow>
             ))}
           </Grid>
         </Container>
