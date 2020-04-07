@@ -16,6 +16,7 @@ import Link from '@material-ui/core/Link';
 import siglogo from './signature.png';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Grow from '@material-ui/core/Grow';
+import Background from './stripes-light.png'
 
 const getMuiTheme = ()=> createMuiTheme({
   palette: {
@@ -47,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+    backgroundImage: `url(${Background})`
   },
   card: {
     height: '100%',
@@ -133,7 +135,7 @@ export default function Album() {
                 style={{ transformOrigin: '0 0 0', transitionDelay: index*100 }}
               >
               <Grid item key={index} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <Card height={4} className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
                     image={image}
