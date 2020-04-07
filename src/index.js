@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Album from './Album'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Album />
   </React.StrictMode>,
   document.getElementById('root')
 );
