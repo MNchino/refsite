@@ -77,14 +77,14 @@ export default function Album() {
   {
     var temp = name.match("[^\/]+$");
     temp = ("").concat(temp);
-    temp = temp.substr(0, temp.indexOf("#"))
+    temp = temp.substr(0, temp.indexOf("@"))
     return temp;
   }
   function cutArtist(name)
   {
     var temp = name.match("[^\/]+$");
     temp = ("").concat(temp);
-    temp = temp.substr(temp.indexOf("#") + 1)
+    temp = temp.substr(temp.indexOf("@") + 1)
     temp = temp.substr(0, temp.indexOf("."))
     return temp;
   }
@@ -134,7 +134,7 @@ export default function Album() {
                     {cutName(image)}
                     </Typography>
                     <Typography>
-                      Artist: {cutArtist(image)}
+                      <b>Artist:</b> {cutArtist(image)}
                     </Typography>
                   </CardContent>
                   <CardActions>
