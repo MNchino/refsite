@@ -99,7 +99,7 @@ export default function Album() {
 
   useEffect(() => 
   {
-    setListOfImages(importAll(require.context('./images/', false, /\.(png|jpe?g|svg)$/)));
+    setListOfImages(importAll(require.context('./images/', false, /\.(png|gif|jpe?g|svg)$/)));
   }, [])
 
   return (
@@ -128,13 +128,13 @@ export default function Album() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
             {listOfImages.map((image, index) => (
                 <Grow
                 in={checked}
                 style={{ transformOrigin: '0 0 0', transitionDelay: index*100 }}
               >
-              <Grid item key={index} xs={12} sm={6} md={4}>
+              <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
                 <Card height={4} className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
