@@ -15,8 +15,11 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import siglogo from './signature.png';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Grow from '@material-ui/core/Grow';
+import Zoom from '@material-ui/core/Zoom';
 import Background from './stripes-light.png'
+import './Album.css';
+import Twitter from '@material-ui/icons/Twitter';
+
 
 const getMuiTheme = ()=> createMuiTheme({
   palette: {
@@ -86,14 +89,29 @@ export default function Album() {
   {
     var temp = name.match("[^\/]+$");
     temp = ("").concat(temp);
-    temp = temp.substr(0, temp.indexOf("@"))
+    const nextPivot = temp.indexOf("@")
+    temp = temp.substr(0, nextPivot)
     return temp;
+  }
+  function cutTwitter(name)
+  {
+    var temp = name.match("[^\/]+$");
+    temp = ("").concat(temp);
+    if (temp.indexOf("@_tw") < 0)
+      return null
+    const pivot = temp.indexOf("@_tw")
+    const nextPivot = temp.indexOf("@", pivot + 3)
+    if (pivot + 4 === nextPivot)
+    {
+      return "same"
+    }
+    return temp.substr(pivot + 4).split('@')[0];
   }
   function cutArtist(name)
   {
     var temp = name.match("[^\/]+$");
     temp = ("").concat(temp);
-    temp = temp.substr(temp.indexOf("@") + 1)
+    temp = temp.substr(temp.lastIndexOf("@") + 1)
     temp = temp.substr(0, temp.indexOf("."))
     return temp;
   }
@@ -128,13 +146,13 @@ export default function Album() {
             </Typography>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="false">
+        <Container className={"" + "animatedBackground "  +classes.cardGrid} maxWidth="false">
           {/* End hero unit */}
           <Grid container spacing={2}>
             {listOfImages.map((image, index) => (
-                <Grow
+                <Zoom
                 in={checked}
-                style={{ transformOrigin: '0 0 0', transitionDelay: index*100 }}
+                style={{transitionDelay: index*150 }}
               >
               <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
                 <Card height={4} className={classes.card}>
@@ -148,7 +166,7 @@ export default function Album() {
                     {cutName(image)}
                     </Typography>
                     <Typography>
-                      <b>Artist:</b> {cutArtist(image)}
+                      <b>Artist:</b> { !!cutTwitter(image) ? <Link  rel="noopener noreferrer" target="_blank" href={"https://twitter.com/" + (cutTwitter(image) === "same" ? cutArtist(image) : cutTwitter(image))}>{cutArtist(image)}&nbsp;<Twitter fontSize="inherit"/></Link> : cutArtist(image)}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -158,7 +176,7 @@ export default function Album() {
                   </CardActions>
                 </Card>
               </Grid>
-              </Grow>
+              </Zoom>
             ))}
           </Grid>
         </Container>
