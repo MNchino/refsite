@@ -126,7 +126,7 @@ export default function Album() {
             </Typography>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="false">
           {/* End hero unit */}
           <Grid container spacing={2}>
             {listOfImages.map((image, index) => (
