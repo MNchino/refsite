@@ -72,6 +72,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function Album() {
   const classes = useStyles();
   const [listOfImages, setListOfImages] = useState([]);
+  const [listOfCompressedImages, setListOfCompressedImages] = useState([]);
   const [checked, setChecked] = React.useState(true);
 
   const handleChange = () => {
@@ -100,6 +101,7 @@ export default function Album() {
   useEffect(() => 
   {
     setListOfImages(importAll(require.context('./images/', false, /\.(png|gif|jpe?g|svg)$/)));
+    setListOfCompressedImages(importAll(require.context('./compressed_images/', false, /\.(png|gif|jpe?g|svg)$/)));
   }, [])
 
   return (
@@ -138,7 +140,7 @@ export default function Album() {
                 <Card height={4} className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={image}
+                    image={listOfCompressedImages[index]}
                     title={image.match("[^\/]+$")}
                   />
                   <CardContent className={classes.cardContent}>
