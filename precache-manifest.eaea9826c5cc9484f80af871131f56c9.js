@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "79b8f968574edd04c2af166e438c89c9",
+    "revision": "439f9563f406b75882c4ae7da2b24005",
     "url": "/index.html"
   },
   {
-    "revision": "350b36c6ef002b6a866e",
+    "revision": "34d35953f5fb2fbec88b",
     "url": "/static/css/main.af2e43b3.chunk.css"
   },
   {
-    "revision": "08c6deaab3c1d9a84675",
-    "url": "/static/js/2.dfec3f49.chunk.js"
+    "revision": "4e9d2788fb22ca89a412",
+    "url": "/static/js/2.ddc7d3fc.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/static/js/2.dfec3f49.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.ddc7d3fc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "350b36c6ef002b6a866e",
-    "url": "/static/js/main.48518f9d.chunk.js"
+    "revision": "34d35953f5fb2fbec88b",
+    "url": "/static/js/main.7de51529.chunk.js"
   },
   {
     "revision": "228fa098814da32aa5c2",
@@ -200,6 +200,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Chinospeedo@_tw@fiaKaiera.eaa1ab20.png"
   },
   {
+    "revision": "78f30cba731d51ded682b1b4abfe9537",
+    "url": "/static/media/Christmas Gift 2022@_twsoup000000@soup000000.78f30cba.png"
+  },
+  {
+    "revision": "85c00e09e4636cdf2280ce31f830820a",
+    "url": "/static/media/Christmas Gift 2022@_twsoup000000@soup000000.85c00e09.png"
+  },
+  {
+    "revision": "8bb91a85673a75ae58a43138bcdf2f7c",
+    "url": "/static/media/Commission 2022@_twExcaliHero@Excali.8bb91a85.png"
+  },
+  {
+    "revision": "cdebe73759881d59e580ec78fc6baca8",
+    "url": "/static/media/Commission 2022@_twExcaliHero@Excali.cdebe737.png"
+  },
+  {
     "revision": "48bf425c7040af56b33adf676d793deb",
     "url": "/static/media/Commission@Mothy.48bf425c.png"
   },
@@ -296,6 +312,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Doodle@_tw@MysticWaffle032.502ccd4e.png"
   },
   {
+    "revision": "1f66ee2f1b6562cce9d2ac24501ddc6a",
+    "url": "/static/media/Doodle@_twExcaliHero@Excali.1f66ee2f.png"
+  },
+  {
+    "revision": "4be3e9043ed589a70bfc8883d0fa51bb",
+    "url": "/static/media/Doodle@_twExcaliHero@Excali.4be3e904.png"
+  },
+  {
     "revision": "5bc0d45e32add16c4cf9dd3e9c68b8f1",
     "url": "/static/media/Dragon Comission@_twDeltravok@Deltra.5bc0d45e.png"
   },
@@ -344,6 +368,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Homework@_twFlipyDweeb@Flipy.f509ad13.png"
   },
   {
+    "revision": "79efbb06f2f4c9b3d1ebbf9bab9f2a32",
+    "url": "/static/media/Icon Commission@_twWonderDreamStar@WonderDreamStar.79efbb06.png"
+  },
+  {
+    "revision": "bbaa5eeb122bfcbe55f7ac1def742b8f",
+    "url": "/static/media/Icon Commission@_twWonderDreamStar@WonderDreamStar.bbaa5eeb.png"
+  },
+  {
     "revision": "5120bee65e94332fbdfc8a74337ba9ab",
     "url": "/static/media/Icon Commission@_twZaaruChan@Zaaru.5120bee6.png"
   },
@@ -382,6 +414,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bfe0d0bbbb3ede4d044813d9830b5b5d",
     "url": "/static/media/Kofi Doodle@_twMarztks@Marz.bfe0d0bb.png"
+  },
+  {
+    "revision": "203ffbaf259ba12cba2e2c26c1bd3e99",
+    "url": "/static/media/Kofi Sketch@_twHRF_Ailia@Ailia.203ffbaf.jpeg"
+  },
+  {
+    "revision": "a6c02e9549606fde48de0503c73d8206",
+    "url": "/static/media/Kofi Sketch@_twHRF_Ailia@Ailia.a6c02e95.jpeg"
   },
   {
     "revision": "23e9aa14bdd9037507901c300e3a0fbf",
@@ -434,6 +474,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c24cca3c150bd0c3a35992d5015deb0f",
     "url": "/static/media/Sprites@_tw@fiaKaiera.c24cca3c.jpg"
+  },
+  {
+    "revision": "c20416c3a0cbfdef409c57142d41e044",
+    "url": "/static/media/YCH Commission@_twWonderDreamStar@WonderDreamStar.c20416c3.png"
+  },
+  {
+    "revision": "dba8c75ddd464e66e977a74919d451f6",
+    "url": "/static/media/YCH Commission@_twWonderDreamStar@WonderDreamStar.dba8c75d.png"
   },
   {
     "revision": "ee7cd8ed2dcec943251eb2763684fc6f",
