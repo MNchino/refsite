@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'; 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -19,6 +18,7 @@ import Zoom from '@material-ui/core/Zoom';
 import Background from './stripes-light.png'
 import './Album.css';
 import Twitter from '@material-ui/icons/Twitter';
+import { Divider } from '@material-ui/core';
 
 
 const getMuiTheme = ()=> createMuiTheme({
@@ -70,17 +70,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 export default function Album() {
   const classes = useStyles();
-  const [listOfImages, setListOfImages] = useState([]);
-  const [listOfCompressedImages, setListOfCompressedImages] = useState([]);
-  const [checked, setChecked] = React.useState(true);
-
-  const handleChange = () => {
-    setChecked((prev) => !prev);
-  };
+  const [listOfImages, setListOfImages] = useState({reference: [], list: []});
 
   function importAll(r) {
     return r.keys().map(r);
@@ -118,9 +110,43 @@ export default function Album() {
 
   useEffect(() => 
   {
-    setListOfImages(importAll(require.context('./images/', false, /\.(png|gif|jpe?g|svg)$/)));
-    setListOfCompressedImages(importAll(require.context('./compressed_images/', false, /\.(png|gif|jpe?g|svg)$/)));
+    const images = importAll(require.context('./images/', false, /\.(png|gif|jpe?g|svg)$/));
+    const compressedImages = importAll(require.context('./compressed_images/', false, /\.(png|gif|jpe?g|svg)$/))
+    const combinedImages = images.map((path, index) => ({path, compressedPath: compressedImages[index]}));
+    const refImages = combinedImages.filter(image => image.path.match(/~Reference/g));
+    const nonRefImages = combinedImages.filter(image => !image.path.match(/~Reference/g));
+    setListOfImages({reference: refImages, list: nonRefImages});
   }, [])
+
+  const createImageTile = (image, index) => (
+    <Zoom
+    in={true}
+    style={{transitionDelay: index*20 }}
+  >
+    <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+      <Card height={4} className={classes.card}>
+        <CardMedia
+          className={classes.cardMedia}
+          image={image.compressedPath}
+          title={image.path.match("[^\/]+$")}
+        />
+        <CardContent className={classes.cardContent}>
+          <Typography gutterBottom variant="h5" component="h2">
+          {cutName(image.path)}
+          </Typography>
+          <Typography>
+            <b>Artist:</b> { !!cutTwitter(image.path) ? <Link  rel="noopener noreferrer" target="_blank" href={"https://twitter.com/" + (cutTwitter(image.path) === "same" ? cutArtist(image.path) : cutTwitter(image.path))}>{cutArtist(image.path)}&nbsp;<Twitter fontSize="inherit"/></Link> : cutArtist(image.path)}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button href={image.path} target="_blank" size="small" color="primary">
+            View
+          </Button>
+        </CardActions>
+      </Card>
+    </Grid>
+  </Zoom>
+  );
 
   return (
     <React.Fragment>
@@ -147,37 +173,17 @@ export default function Album() {
           </Container>
         </div>
         <Container className={"" + "animatedBackground "  +classes.cardGrid} maxWidth="false">
-          {/* End hero unit */}
+          <Card style={{padding: '24px', marginBottom: '24px'}}>
+            <Typography component="h2" variant="h4" align="center" color="textPrimary" gutterBottom>
+              <br/>Main References
+            </Typography>
+            <Grid container spacing={2}>
+              {listOfImages.reference.map(createImageTile)}
+            </Grid>
+          </Card>
+          <Divider style={{marginBottom: '24px'}}/>
           <Grid container spacing={2}>
-            {listOfImages.map((image, index) => (
-                <Zoom
-                in={checked}
-                style={{transitionDelay: index*150 }}
-              >
-              <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
-                <Card height={4} className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={listOfCompressedImages[index]}
-                    title={image.match("[^\/]+$")}
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                    {cutName(image)}
-                    </Typography>
-                    <Typography>
-                      <b>Artist:</b> { !!cutTwitter(image) ? <Link  rel="noopener noreferrer" target="_blank" href={"https://twitter.com/" + (cutTwitter(image) === "same" ? cutArtist(image) : cutTwitter(image))}>{cutArtist(image)}&nbsp;<Twitter fontSize="inherit"/></Link> : cutArtist(image)}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button href={image} target="_blank" size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-              </Zoom>
-            ))}
+            {listOfImages.list.map(createImageTile)}
           </Grid>
         </Container>
       </main>

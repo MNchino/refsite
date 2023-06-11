@@ -15,8 +15,8 @@
     "pngquant-bin": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-image-file-resizer": "^0.4.2",
     "react-scripts": "3.4.1",
+    "sharp": "^0.32.1",
     "svgo": "^2.2.2",
     "typescript": "^3.8.3"
   },
