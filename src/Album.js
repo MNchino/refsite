@@ -113,8 +113,8 @@ export default function Album() {
     const images = importAll(require.context('./images/', false, /\.(png|gif|jpe?g|svg)$/));
     const compressedImages = importAll(require.context('./compressed_images/', false, /\.(png|gif|jpe?g|svg)$/))
     const combinedImages = images.map((path, index) => ({path, compressedPath: compressedImages[index]}));
-    const refImages = combinedImages.filter(image => image.path.match(/~Reference/g));
-    const nonRefImages = combinedImages.filter(image => !image.path.match(/~Reference/g));
+    const refImages = combinedImages.filter(image => image.path.match(/Reference/g));
+    const nonRefImages = combinedImages.filter(image => !image.path.match(/Reference/g));
     setListOfImages({reference: refImages, list: nonRefImages});
   }, [])
 
