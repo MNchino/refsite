@@ -9,7 +9,6 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "compress-images": "^1.9.8",
     "gifsicle": "^5.2.0",
     "mozjpeg": "^7.0.0",
     "pngquant-bin": "^6.0.0",
@@ -29,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
+    "migrate-metadata": "node src/metadatabuilder.js",
     "deploy": "echo chinos.ml > ./build/CNAME && gh-pages -d build"
   },
   "eslintConfig": {

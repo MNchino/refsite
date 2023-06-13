@@ -18,6 +18,7 @@ import Zoom from '@material-ui/core/Zoom';
 import Background from './stripes-light.png'
 import './Album.css';
 import Twitter from '@material-ui/icons/Twitter';
+import metadata from './metadata.json';
 import { Divider } from '@material-ui/core';
 
 
@@ -87,6 +88,7 @@ export default function Album() {
   }
   function cutTwitter(name)
   {
+    return metadata[name]?.twitter;
     var temp = name.match("[^\/]+$");
     temp = ("").concat(temp);
     if (temp.indexOf("@_tw") < 0)
