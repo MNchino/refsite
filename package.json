@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "migrate-metadata": "node src/metadatabuilder.js",
-    "deploy": "echo chinos.ml > ./build/CNAME && gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
