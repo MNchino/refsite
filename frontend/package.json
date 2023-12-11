@@ -1,0 +1,61 @@
+{
+  "homepage": "https://mnchino.github.io/refsite/",
+  "name": "refsite",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.20",
+    "@mui/styles": "^5.14.20",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "axios": "^1.6.2",
+    "clsx": "^2.0.0",
+    "gifsicle": "^5.2.0",
+    "mozjpeg": "^7.0.0",
+    "pngquant-bin": "^6.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^16.13.1",
+    "react-mui-dropzone": "^4.0.7",
+    "react-router-dom": "^6.20.1",
+    "react-scripts": "^5.0.1",
+    "sharp": "^0.32.1",
+    "svgo": "^2.2.2",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "compress": "node src/compression.js",
+    "start": "react-scripts start",
+    "prebuild": "npm run compress",
+    "prestart": "npm run compress",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "migrate-metadata": "node src/metadatabuilder.js",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
