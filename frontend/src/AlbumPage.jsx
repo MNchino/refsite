@@ -17,6 +17,7 @@ import Zoom from '@mui/material/Zoom';
 import Background from './stripes-light.png'
 import Twitter from '@mui/icons-material/Twitter';
 import metadata from './metadata.json';
+import {useLocation} from "react-router-dom";
 import { Divider } from '@mui/material';
 import './AlbumPage.css';
 
@@ -29,6 +30,9 @@ function Copyright() {
 }
 
 const AlbumPage = ({defaultFilter = "chino"}) => {
+  const location = useLocation();
+  const filter = new URLSearchParams(location.search).get('filter');
+  const pageFilter = filter ?? defaultFilter;
   const useStyles = makeStyles((theme) => ({
     icon: {
       marginRight: theme.spacing(2),
@@ -98,12 +102,12 @@ const AlbumPage = ({defaultFilter = "chino"}) => {
     })
     console.log(metadata);
     const filteredCombinedImages = imagesWithFileNames.filter((image) =>  {
-    return metadata[image.fileName]?.tags.includes(defaultFilter)
+    return metadata[image.fileName]?.tags.includes(pageFilter)
   })
     const refImages = filteredCombinedImages.filter(image => image.path.match(/Reference/g));
     const nonRefImages = filteredCombinedImages.filter(image => !image.path.match(/Reference/g));
     setListOfImages({reference: refImages, list: nonRefImages});
-  }, [])
+  }, [pageFilter])
 
   const createImageTile = (image, index) => (
     <Zoom
@@ -137,9 +141,9 @@ const AlbumPage = ({defaultFilter = "chino"}) => {
   
   return (
     <>
-      <AppBar src="relative">
-        <Toolbar>
-          <img src={defaultFilter === 'chino' ? siglogo : karanilogo} className={classes.icon} style={{height:32,}}/>
+      <AppBar src="relative" >
+        <Toolbar >
+          <img src={pageFilter === 'chino' ? siglogo : karanilogo} className={classes.icon} style={{height:32,}}/>
           <Typography variant="h6" color="inherit" noWrap>
             Reference Sheet Site
           </Typography>
